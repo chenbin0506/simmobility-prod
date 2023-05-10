@@ -340,7 +340,7 @@ void RGD_Graph::addEdge(const TripRequestMessage& request, const Group<TripReque
 #ifndef NDEBUG
     const RG_Edge rgEdge = std::make_pair(request, requestGroup);
     try{
-    rgEdges.insert(rgEdge);
+        rgEdges.insert(rgEdge);
     }catch(const std::exception& e)
     {
         Print()<<"Exception "<<__FILE__<<":"<<__LINE__<<std::endl;

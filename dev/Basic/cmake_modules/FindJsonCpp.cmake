@@ -13,6 +13,7 @@
 FIND_PATH(JSONCPP_INCLUDE_DIR json/json.h
   /usr/local/include/jsoncpp
   /usr/include/jsoncpp
+  /usr/include/json/jsoncpp
   /afs/csail.mit.edu/u/x/xuyan/lib/json-cpp/jsoncpp-src-0.5.0
   /afs/csail.mit.edu/u/x/xuyan/lib/json-cpp/jsoncpp-src-0.5.0/include
   /afs/csail.mit.edu/u/x/xuyan/lib/json-cpp/jsoncpp-src-0.5.0/include/json

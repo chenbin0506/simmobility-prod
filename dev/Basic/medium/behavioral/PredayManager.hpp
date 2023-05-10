@@ -94,6 +94,12 @@ public:
         this->currentValue = currentValue;
     }
 
+    friend std::ostream& operator<< (std::ostream& out, CalibrationVariable const &var)
+    {
+        out << var.getVariableName();
+        return out;
+    }
+
 private:
     std::string variableName;
     std::string scriptFileName;

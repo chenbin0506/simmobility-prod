@@ -11,7 +11,7 @@
     <db_proc_groups>
         <!-- SimMobility Virtual City Network -->
 
-        <proc_map id="virtualcity" format="aimsun">
+        <proc_map id="simmobcity" format="aimsun">
 	    <!-- Road Network Related stored procedures-->
             <mapping name="nodes" procedure="get_nodes()"/>
             <mapping name="links" procedure="get_links()"/>
@@ -43,13 +43,13 @@
             <mapping name="pt_mrt_dispatch_freq" procedure="get_pt_train_dispatch_freq()"/>
             <mapping name="pt_mrt_block" procedure="get_pt_train_blocks()"/>
             <mapping name="pt_mrt_route" procedure="get_pt_train_route()"/>
-            <!-- This procedure returns platforms from pt_mrt_platform with only lineid,Sequenceno,platformNo fields -->
-	    <mapping name="pt_mrt_platform" procedure="get_pt_train_route_platform()"/>
-	    <mapping name="pt_mrt_block_polyline" procedure="get_pt_train_block_polylines()"/>
-	    <mapping name="pt_opposite_lines" procedure="get_pt_opposite_lines()"/>
-	    <mapping name="get_train_fleet" procedure="get_train_fleet()"/>
-	    <mapping name="get_uturn_platforms" procedure="get_pt_uturn_platforms()"/>
-	    <mapping name="get_train_line_properties" procedure="get_pt_train_line_properties()"/>
+        <!-- This procedure returns platforms from pt_mrt_platform with only lineid,Sequenceno,platformNo fields -->
+	        <mapping name="pt_mrt_platform" procedure="get_pt_train_route_platform()"/>
+	        <mapping name="pt_mrt_block_polyline" procedure="get_pt_train_block_polylines()"/>
+	        <mapping name="pt_opposite_lines" procedure="get_pt_opposite_lines()"/>
+	        <mapping name="get_train_fleet" procedure="get_train_fleet()"/>
+	        <mapping name="get_uturn_platforms" procedure="get_pt_uturn_platforms()"/>
+	        <mapping name="get_train_line_properties" procedure="get_pt_train_line_properties()"/>
 	    <!-- ERP (Electronic Road Pricing) Related stored procedures-->
             <mapping name="erp_gantry_zone" procedure="get_erp_gantry_zone()"/>
             <mapping name="erp_gantry_zone" procedure="get_erp_gantry_zone()"/>
@@ -134,8 +134,8 @@
 
     <system>
         <!-- If loading from the database, which database, proc_map, and credentials are used? -->
-        <network_database database="fm_remote" credentials="fm_remote_plain" proc_map="virtualcity" tablenames_map="simmobcity"/>
-        <population_database  database="fm_remote" credentials="fm_remote_plain" proc_map="" tablenames_map="simmobcity"/> 
+        <network_database database="fm_hpchead" credentials="fm_hpchead" proc_map="simmobcity" tablenames_map="simmobcity"/>
+        <population_database  database="fm_hpchead" credentials="fm_hpchead" proc_map="" tablenames_map="simmobcity"/> 
         <!-- the config file. This is intended to be used for new or temporary features for quick testing. -->
         <generic_props>
             <!-- <property key="sampleproperty" value="samplevalue"/> -->

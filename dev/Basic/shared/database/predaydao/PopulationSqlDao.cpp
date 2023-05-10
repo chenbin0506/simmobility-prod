@@ -10,6 +10,8 @@
 #include <conf/ConfigParams.hpp>
 #include "DatabaseHelper.hpp"
 #include "logging/Log.hpp"
+#include "logging/logger.h"
+
 //#include "medium/config/MT_Config.hpp"
 
 using namespace sim_mob;
@@ -89,9 +91,13 @@ void PopulationSqlDao::getAllIds(std::vector<long>& outList)
 		ConfigParams& fullConfig = ConfigManager::GetInstanceRW().FullConfig();
 		Statement query(connection.getSession<soci::session>());
 		const std::string MAIN_SCHEMA = fullConfig.schemas.main_schema;
+		//LogInfo("MAIN_SCHEMA: %s", MAIN_SCHEMA.c_str());
 		const std::string TABLE_NAME = fullConfig.dbStoredProcMap["get_individual_id_list"];
+		//LogInfo("TABLE_NAME: %s", TABLE_NAME.c_str());
 		const std::string DB_SP_GET_INDIVIDUAL_IDS = APPLY_SCHEMA(MAIN_SCHEMA,TABLE_NAME);
+		//LogInfo("DB_SP_GET_INDIVIDUAL_IDS: %s", DB_SP_GET_INDIVIDUAL_IDS.c_str());
 		const std::string DB_GET_ALL_PERSON_IDS = "SELECT * FROM " + DB_SP_GET_INDIVIDUAL_IDS;
+		//LogInfo("DB_GET_ALL_PERSON_IDS: %s", DB_GET_ALL_PERSON_IDS.c_str());
 		prepareStatement(DB_GET_ALL_PERSON_IDS, db::EMPTY_PARAMS, query);
 		ResultSet rs(query);
 		for (ResultSet::const_iterator it = rs.begin(); it != rs.end(); ++it)

@@ -10,6 +10,7 @@
 #include <functional>
 #include <vector>
 #include <string>
+#include <stdexcept>
 
 namespace sim_mob {
 

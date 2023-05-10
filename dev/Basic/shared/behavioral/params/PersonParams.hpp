@@ -13,6 +13,7 @@
 #include "behavioral/PredayUtils.hpp"
 #include "ZoneCostParams.hpp"
 #include <algorithm>
+#include <array>
 
 // Type Definitions for vehicle energy struct (needs to be global)
 typedef struct {

@@ -123,7 +123,7 @@ option(BUILD_LONG "Build long-term simulator." ON)
 option(BUILD_LIBS "If true, builds the short, medium, and long-term code as libraries (to be installed in sim_mob_short,sim_mob_mid,sim_mob_long." OFF)
 
 #Option: Static building SimMobility. Currently static building doesn't work with Ubuntu 16.04
-option(BUILD_STATIC "If true, SimMobility is built in static mode." ON)
+option(BUILD_STATIC "If true, SimMobility is built in static mode." OFF)
 
 #Option: Run SimMobility to only produce an input XML file for itself
 option(SIMMOB_XML_WRITER "Sim Mobility will print the network as an XML file." OFF)
@@ -347,6 +347,7 @@ SET(LibraryList "")
 set(Boost_ADDITIONAL_VERSIONS "1.47" "1.47.0" "1.48" "1.48.0" "1.49" "1.49.0" "1.50" "1.50.0" "1.51" "1.51.0" "1.52" "1.52.0" "1.53" "1.53.0" "1.54" "1.54.0" "1.55.0" "1.56.0" "1.57.0" "1.58.0" "1.59.0")
 find_package(Boost COMPONENTS system thread filesystem serialization date_time chrono random regex REQUIRED)
 include_directories(${Boost_INCLUDE_DIR})
+link_directories(${Boost_LIBRARY_DIRS})
 IF (${BUILD_STATIC} MATCHES "ON")
    LIST(APPEND LibraryList -Wl,-Bstatic)
 ENDIF(${BUILD_STATIC} MATCHES "ON")
@@ -358,6 +359,7 @@ LIST(APPEND LibraryList -lboost_system -lboost_thread -lboost_filesystem -lboost
 find_package(TinyXML)
 if (TINYXML_FOUND)
   include_directories(${TINYXML_INCLUDE_DIR})
+  link_directories(${TINYXML_LIBRARIES})
   LIST(APPEND LibraryList ${TINYXML_LIBRARIES})
 endif()
 
@@ -369,31 +371,37 @@ include_directories(${XSD_INCLUDE_DIR})
 #Find JsonCpp
 find_package(JsonCpp REQUIRED)
 include_directories(${JSONCPP_INCLUDE_DIR})
+link_directories(${JSONCPP_LIBRARY})
 LIST(APPEND LibraryList ${JSONCPP_LIBRARY})
 
 #Find PROJ4
 find_package(PROJ4 REQUIRED)
 include_directories(${PROJ4_INCLUDE_DIR})
+link_directories(${PROJ4_LIBRARY})
 LIST(APPEND LibraryList ${PROJ4_LIBRARY})
 
 #Find PQ
 find_package(PostgreSQL REQUIRED)
 include_directories(${PostgreSQL_INCLUDE_DIRS})
+link_directories(${PostgreSQL_LIBRARIES})
 LIST(APPEND LibraryList ${PostgreSQL_LIBRARIES})
 
 #Find SOCI
 find_package(SOCI REQUIRED)
 include_directories(${SOCI_INCLUDE_DIRS})
+link_libraries(${SOCI_LIBRARIES})
 LIST(APPEND LibraryList ${SOCI_LIBRARIES})
 
 #Find SOCI-PostgreSQL
 find_package(SOCIPostgreSQL REQUIRED)
 include_directories(${SOCIPOSTGRESQL_INCLUDE_DIRS})
+link_directories(${SOCIPOSTGRESQL_LIBRARIES})
 LIST(APPEND LibraryList ${SOCIPOSTGRESQL_LIBRARIES})
 
 #Find Lua
 find_package(Lua REQUIRED)
 include_directories(${LUA_INCLUDE_DIRS})
+link_libraries(${LUA_LIBRARIES})
 LIST(APPEND LibraryList ${LUA_LIBRARIES})
 
 #we can only link XercesC dynamically right now. Hence the line below. 

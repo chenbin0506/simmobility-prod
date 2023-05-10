@@ -33,6 +33,7 @@
 #include "util/CSVReader.hpp"
 #include "util/LangHelpers.hpp"
 #include "util/Utils.hpp"
+#include "logging/logger.h"
 
 using namespace std;
 using namespace sim_mob;
@@ -640,9 +641,13 @@ void sim_mob::medium::PredayManager::loadPersonIds()
 	if (conn.isConnected())
 	{
 		PopulationSqlDao populationDao(conn);
+		LogInfo("");
 		populationDao.getIncomeCategories(PersonParams::getIncomeCategoryLowerLimits());
+		LogInfo("");
 		populationDao.getAddresses();
+		LogInfo("");
 		populationDao.getAllIds(ltPersonIdList);
+		LogInfo("");
 	}
 }
 
