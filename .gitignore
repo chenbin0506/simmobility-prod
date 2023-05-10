@@ -18,6 +18,7 @@ testing/RoadNetworkSampleVis/applet/
 *.vcxproj*
 dev/Basic/.idea/*
 dev/Basic/.vs/*
+.vscode/
 
 #Ignore object files
 *.o
@@ -36,6 +37,7 @@ dev/Basic/.vs/*
 
 #Ignore video files (binary files really mess up git)
 *.mp4
+dev/Basic/activity_schedule
 
 #Don't ignore gitignore files:
 !.gitignore
